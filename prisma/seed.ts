@@ -37,8 +37,8 @@ async function main() {
         Rooms: {
           createMany: {
             data: [
-              { name: 'Triple', capacity: 3 },
-              { name: 'Triple', capacity: 3 },
+              { name: '101', capacity: 3 },
+              { name: '102', capacity: 3 },
             ],
           },
         },
@@ -52,8 +52,8 @@ async function main() {
         Rooms: {
           createMany: {
             data: [
-              { name: 'Single', capacity: 1 },
-              { name: 'Double', capacity: 2 },
+              { name: '103', capacity: 1 },
+              { name: '104', capacity: 2 },
             ],
           },
         },
@@ -67,9 +67,9 @@ async function main() {
         Rooms: {
           createMany: {
             data: [
-              { name: 'Triple', capacity: 3 },
-              { name: 'Double', capacity: 2 },
-              { name: 'Single', capacity: 1},
+              { name: '105', capacity: 3 },
+              { name: '106', capacity: 2 },
+              { name: '107', capacity: 1},
             ],
           },
         },
