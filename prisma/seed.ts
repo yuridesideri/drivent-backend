@@ -37,8 +37,8 @@ async function main() {
         Rooms: {
           createMany: {
             data: [
-              { name: 'Triple', capacity: 3 },
-              { name: 'Triple', capacity: 3 },
+              { name: '101', capacity: 3 },
+              { name: '102', capacity: 3 },
             ],
           },
         },
@@ -47,13 +47,13 @@ async function main() {
     });
     let hotel2WithRoom = await prisma.hotel.create({
       data: {
-        name: 'Driven Resort',
+        name: 'Driven Plazza',
         image: 'https://thumbs.dreamstime.com/b/hotel-sign-16711677.jpg',
         Rooms: {
           createMany: {
             data: [
-              { name: 'Single', capacity: 1 },
-              { name: 'Double', capacity: 2 },
+              { name: '103', capacity: 1 },
+              { name: '104', capacity: 2 },
             ],
           },
         },
@@ -62,14 +62,14 @@ async function main() {
     });
     let hotel3WithRoom = await prisma.hotel.create({
       data: {
-        name: 'Driven Resort',
+        name: 'Driven Master Hotel',
         image: 'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/12/1329/MUMGH-P0765-Inner-Courtyard-Hotel-Exterior-Evening.jpg/MUMGH-P0765-Inner-Courtyard-Hotel-Exterior-Evening.16x9.jpg',
         Rooms: {
           createMany: {
             data: [
-              { name: 'Triple', capacity: 3 },
-              { name: 'Double', capacity: 2 },
-              { name: 'Single', capacity: 1},
+              { name: '105', capacity: 3 },
+              { name: '106', capacity: 2 },
+              { name: '107', capacity: 1},
             ],
           },
         },
