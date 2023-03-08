@@ -18,7 +18,7 @@ async function findRoomsByHotelId(hotelId: number) {
 async function findAllHotelsWithRooms() {
   return prisma.hotel.findMany({
     include: {
-      Rooms: true,
+      Rooms: {include:{Booking: true}},
     },
   });
 }
