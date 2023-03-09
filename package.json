@@ -23,7 +23,8 @@
     "dev:migration:run": "npm run dev:load-envs prisma migrate deploy",
     "dev:migration:generate": "npm run dev:load-envs prisma migrate dev",
     "dev:seed": "npm run dev:load-envs prisma db seed",
-    "dev": "NODE_ENV=development nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/server.ts' -e ts"
+    "dev": "NODE_ENV=development nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/server.ts' -e ts",
+    "stress": "npx autocannon -c 1000 -d 30 --renderStatusCodes --latency --warmup [-c 1 -d 2] localhost:5000/photos?albumId=1"
   },
   "keywords": [
     "driven.t",
@@ -50,6 +51,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
+    "autocannon": "^7.10.0",
     "dotenv-cli": "^5.1.0",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
@@ -87,6 +89,7 @@
     "http-status": "^1.5.2",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
+    "redis": "^4.6.5",
     "reflect-metadata": "^0.1.13"
   }
 }
