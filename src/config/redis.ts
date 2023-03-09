@@ -9,4 +9,6 @@ export async function connectRedis() {
   await redis.connect();
 }
 
-connectRedis();
+export async function disconnectRedis() {
+  await redis?.disconnect();
+}
