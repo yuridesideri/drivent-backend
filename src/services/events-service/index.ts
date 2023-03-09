@@ -13,6 +13,8 @@ async function getFirstEvent(): Promise<GetFirstEventResult | string> {
     const event = await eventRepository.findFirst();
     if (!event) throw notFoundError();
 
+    await eventRepository.setEventCache(cacheKey, exclude(event, "createdAt", "updatedAt"))
+
     return exclude(event, "createdAt", "updatedAt");
   }
 
