@@ -8,6 +8,7 @@ async function eventCache(key: RedisCommandArgument) {
 
 async function setEventCache(key: RedisCommandArgument, event: Omit<Event, "createdAt" | "updatedAt">) {
   redis.set(key, JSON.stringify(event));
+  //event: driven
   return;
 }
 
