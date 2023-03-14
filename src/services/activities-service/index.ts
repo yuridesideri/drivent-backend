@@ -4,14 +4,14 @@ import ticketRepository from '@/repositories/ticket-repository';
 import bookingRepository from '@/repositories/booking-repository';
 import { notFoundError } from '@/errors';
 import { cannotListActivities } from '@/errors';
+import { Activities } from '@prisma/client';
 
 async function listActivities(userId: number) {
-  //Tem enrollment?
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
   if (!enrollment) {
     throw notFoundError();
   }
-  //Tem ticket pago isOnline false e includesHotel true
+
   const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);
 
   if (!ticket || ticket.status === 'RESERVED' || ticket.TicketType.isRemote) {
@@ -31,7 +31,7 @@ async function getActivities(userId: number) {
 
   const userActivities = await activityRepository.findUserActivities(userId);
 
-  const activitiesWithUser = activities.map(activity => {
+  const activitiesWithUser = activities.map((activity: Activity) => {
     for(const userActivity of userActivities){
       if(activity.id === userActivity.activityId) return {...activity, userSubscribed: true }
     }
@@ -50,6 +50,8 @@ async function createUserActivity(userId: number, activityId: number) {
 
   return await activityRepository.registerInActivity(userId, activityId);
 }
+
+export type Activity = Omit<Activities, "placeId" | "createdAt" | "updatedAt">;
 
 const activityService = {
   getActivities,
