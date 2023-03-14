@@ -97,88 +97,88 @@ async function main() {
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: new Date(2022, 2, 18, 6),
-          endsAt: new Date(2022, 2, 18, 7),
+          startsAt: "6:00",
+          endsAt: "7:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: new Date(2022, 2, 18, 7),
-          endsAt: new Date(2022, 2, 18, 8),
+          startsAt: "7:30",
+          endsAt: "8:30",
           day: new Date(2022, 2, 18, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: new Date(2022, 2, 18, 6),
-          endsAt: new Date(2022, 2, 18, 8),
+          startsAt: "6:00",
+          endsAt: "7:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 2
         },
         {
           title: "Palestra y",
           vacancies: 8,
-          startsAt: new Date(2022, 2, 18, 6),
-          endsAt: new Date(2022, 2, 18, 10),
+          startsAt: "6:30",
+          endsAt: "7:30",
           day: new Date(2022, 2, 18, 0),
           placeId: 3
         },
         {
           title: "Palestra z",
           vacancies: 3,
-          startsAt: new Date(2022, 2, 18, 7),
-          endsAt: new Date(2022, 2, 18, 8),
+          startsAt: "7:00",
+          endsAt: "7:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 3
         },
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: new Date(2022, 2, 19, 6),
-          endsAt: new Date(2022, 2, 19, 7),
+          startsAt: "6:00",
+          endsAt: "7:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: new Date(2022, 2, 19, 7),
-          endsAt: new Date(2022, 2, 19, 8),
+          startsAt: "7:00",
+          endsAt: "8:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: new Date(2022, 2, 19, 6),
-          endsAt: new Date(2022, 2, 19, 8),
+          startsAt: "6:00",
+          endsAt: "8:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 2
         },
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: new Date(2022, 2, 20, 6),
-          endsAt: new Date(2022, 2, 20, 7),
+          startsAt: "6:00",
+          endsAt: "7:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: new Date(2022, 2, 20, 7),
-          endsAt: new Date(2022, 2, 20, 8),
+          startsAt: "7:00",
+          endsAt: "8:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: new Date(2022, 2, 20, 6),
-          endsAt: new Date(2022, 2, 20, 8),
+          startsAt: "6:00",
+          endsAt: "8:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 2
         },
