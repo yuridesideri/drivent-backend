@@ -160,6 +160,7 @@ model Activities {
   placeId   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  @@index([day])
 }
 
 model UserActivities {
