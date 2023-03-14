@@ -33,19 +33,14 @@ async function getActivities(userId: number) {
 
   const activitiesWithUser = activities.map(activity => {
     for(const userActivity of userActivities){
-      if(activity.id === userActivity.activityId){
-        return {
-          ...activity,
-          userSubscribed: true
-        }
-      } else{
-        return {
-          ...activity,
-          userSubscribed: false
-        }
-      }
+      if(activity.id === userActivity.activityId) return {...activity, userSubscribed: true }
     }
-  })
+
+    return {
+      ...activity,
+      userSubscribed: false
+    }
+  });
 
   return activitiesWithUser;
 }
