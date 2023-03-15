@@ -35,6 +35,9 @@ export async function createUserActivity(req: AuthenticatedRequest, res: Respons
     if (error.name === "CannotListActivities") {
       return res.sendStatus(httpStatus.PAYMENT_REQUIRED);
     }
+    if (error.name === "ConflictError") {
+      return res.status(httpStatus.CONFLICT).send(error.message);
+    }
     return res.sendStatus(httpStatus.BAD_REQUEST);
   }
 }

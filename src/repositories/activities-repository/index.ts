@@ -19,22 +19,49 @@ async function findAllActivities(): Promise<any[] | []> {
   });
 }
 
+async function findActivityById(id: number): Promise<any | undefined> {
+  return prisma.activities.findUnique({
+    where: {
+      id
+    },
+    select: {
+      id: true,
+      title: true,
+      vacancies: true,
+      startsAt: true,
+      endsAt: true,
+      day: true,
+      Places: {
+        select: {
+          name: true
+        }
+      }
+    },
+  });
+}
+
 async function findUserActivities(userId: number) {
   return prisma.userActivities.findMany({
     where: {
       userId,
     },
     select: {
-      activityId: true
+      activityId: true,
+      startsAt: true,
+      endsAt: true
     }
   });
 }
 
-async function registerInActivity(userId: number, activityId: number) {
+async function registerInActivity(params: userActivity) {
+  const { userId, activityId, startsAt, endsAt } = params;
+
   return prisma.userActivities.create({
     data: {
       userId,
-      activityId
+      activityId,
+      startsAt,
+      endsAt
     }
   });
 }
@@ -42,6 +69,7 @@ async function registerInActivity(userId: number, activityId: number) {
 const activityRepository = {
   findAllActivities,
   findUserActivities,
+  findActivityById,
   registerInActivity
 };
 
