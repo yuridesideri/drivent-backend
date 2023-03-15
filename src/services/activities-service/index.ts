@@ -1,10 +1,10 @@
-import activityRepository from '@/repositories/activities-repository';
-import enrollmentRepository from '@/repositories/enrollment-repository';
-import ticketRepository from '@/repositories/ticket-repository';
-import bookingRepository from '@/repositories/booking-repository';
-import { notFoundError } from '@/errors';
-import { cannotListActivities } from '@/errors';
-import { Activities } from '@prisma/client';
+import activityRepository from "@/repositories/activities-repository";
+import enrollmentRepository from "@/repositories/enrollment-repository";
+import ticketRepository from "@/repositories/ticket-repository";
+import bookingRepository from "@/repositories/booking-repository";
+import { notFoundError } from "@/errors";
+import { cannotListActivities } from "@/errors";
+import { Activities } from "@prisma/client";
 
 async function listActivities(userId: number) {
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
@@ -14,7 +14,7 @@ async function listActivities(userId: number) {
 
   const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);
 
-  if (!ticket || ticket.status === 'RESERVED' || ticket.TicketType.isRemote) {
+  if (!ticket || ticket.status === "RESERVED" || ticket.TicketType.isRemote) {
     throw cannotListActivities();
   }
 
@@ -32,14 +32,14 @@ async function getActivities(userId: number) {
   const userActivities = await activityRepository.findUserActivities(userId);
 
   const activitiesWithUser = activities.map((activity: Activity) => {
-    for(const userActivity of userActivities){
-      if(activity.id === userActivity.activityId) return {...activity, userSubscribed: true }
+    for(const userActivity of userActivities) {
+      if(activity.id === userActivity.activityId) return { ...activity, userSubscribed: true };
     }
 
     return {
       ...activity,
       userSubscribed: false
-    }
+    };
   });
 
   return activitiesWithUser;
