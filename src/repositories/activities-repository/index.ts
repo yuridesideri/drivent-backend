@@ -66,11 +66,26 @@ async function registerInActivity(params: userActivity) {
   });
 }
 
+async function updateVacancies(id: number) {
+  return prisma.activities.update({
+    where: {
+      id
+    },
+    data: {
+      vacancies: {
+        decrement: 1
+      }
+    }
+  });
+}
+
+
 const activityRepository = {
   findAllActivities,
   findUserActivities,
   findActivityById,
-  registerInActivity
+  registerInActivity,
+  updateVacancies
 };
 
 export default activityRepository;

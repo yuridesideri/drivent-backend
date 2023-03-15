@@ -1,7 +1,6 @@
 import activityRepository from '@/repositories/activities-repository';
 import enrollmentRepository from '@/repositories/enrollment-repository';
 import ticketRepository from '@/repositories/ticket-repository';
-import bookingRepository from '@/repositories/booking-repository';
 import { notFoundError, cannotListActivities, conflictError } from '@/errors';
 import { Activities, UserActivities } from '@prisma/client';
 
@@ -15,11 +14,6 @@ async function listActivities(userId: number) {
 
   if (!ticket || ticket.status === 'RESERVED' || ticket.TicketType.isRemote) {
     throw cannotListActivities();
-  }
-
-  const booking = await bookingRepository.findByUserId(userId);
-  if (!booking) {
-    throw notFoundError();
   }
 }
 
@@ -53,8 +47,12 @@ async function createUserActivity(userId: number, activityId: number) {
   userActivities.map((item: userActivity) => {
     if(item.startsAt === activity.startsAt) throw conflictError("Usuário já registrado em um evento neste horário");
   })
+  
+  const createdActivity = await activityRepository.registerInActivity({userId, activityId, startsAt: activity.startsAt, endsAt: activity.endsAt});
 
-  return await activityRepository.registerInActivity({userId, activityId, startsAt: activity.startsAt, endsAt: activity.endsAt});
+  await activityRepository.updateVacancies(activityId);
+
+  return createdActivity;
 }
 
 export type Activity = Omit<Activities, "placeId" | "createdAt" | "updatedAt">;
