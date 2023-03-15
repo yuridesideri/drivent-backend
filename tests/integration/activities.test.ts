@@ -6,6 +6,7 @@ import supertest from "supertest";
 import { createEnrollmentWithAddress, createHotel, createPayment, createRoomWithHotelId, createTicket, createTicketTypeWithHotel, createUser } from "../factories";
 import { cleanDb, generateValidToken } from "../helpers";
 import * as jwt from "jsonwebtoken";
+import { createActivity } from "../factories/activities-factory";
 
 beforeAll(async () => {
   await init();
@@ -83,5 +84,71 @@ describe("GET /activities when token is valid", () => {
     const response = await server.get("/activities").set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toEqual(httpStatus.PAYMENT_REQUIRED);
+  });
+});
+
+describe("POST /activities when token is valid", () => {
+  it("should return status 200 when activity created for user", async () => {
+    const user = await createUser();
+    const token = await generateValidToken(user);
+    const enrollment = await createEnrollmentWithAddress(user);
+    const ticketType = await createTicketTypeWithHotel();
+    const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+    await createPayment(ticket.id, ticketType.price);
+
+    const hotel = await createHotel();
+    await createRoomWithHotelId(hotel.id);
+
+    const activity = await createActivity();
+
+    const response = await server.post("/activities").set("Authorization", `Bearer ${token}`).send({ activityId: activity.id });
+
+    expect(response.status).toEqual(httpStatus.OK);
+    expect(response.body).toEqual({
+      id: expect.any(Number),
+      startsAt: expect.any(String),
+      endsAt: expect.any(String),
+      userId: expect.any(Number),
+      activityId: expect.any(Number),
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
+    });
+  });
+
+  it("should return 409 when the user is already linked to an activity", async () => {
+    const user = await createUser();
+    const token = await generateValidToken(user);
+    const enrollment = await createEnrollmentWithAddress(user);
+    const ticketType = await createTicketTypeWithHotel();
+    const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+    await createPayment(ticket.id, ticketType.price);
+
+    const hotel = await createHotel();
+    await createRoomWithHotelId(hotel.id);
+
+    const activity = await createActivity();
+
+    await server.post("/activities").set("Authorization", `Bearer ${token}`).send({ activityId: activity.id });
+    const response = await server.post("/activities").set("Authorization", `Bearer ${token}`).send({ activityId: activity.id });
+
+    expect(response.status).toEqual(httpStatus.CONFLICT);
+  });
+
+  it("should return 400 when the id passed by the body does not exist", async () => {
+    const user = await createUser();
+    const token = await generateValidToken(user);
+    const enrollment = await createEnrollmentWithAddress(user);
+    const ticketType = await createTicketTypeWithHotel();
+    const ticket = await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
+    await createPayment(ticket.id, ticketType.price);
+
+    const hotel = await createHotel();
+    await createRoomWithHotelId(hotel.id);
+
+    await createActivity();
+
+    const response = await server.post("/activities").set("Authorization", `Bearer ${token}`).send({ activityId: 589375489347683 });
+
+    expect(response.status).toEqual(httpStatus.BAD_REQUEST);
   });
 });
