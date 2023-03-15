@@ -28,7 +28,7 @@ async function getActivities(userId: number) {
     for(const userActivity of userActivities) {
       if(activity.id === userActivity.activityId) return { ...activity, userSubscribed: true };
     }
-
+    
     return {
       ...activity,
       userSubscribed: false
