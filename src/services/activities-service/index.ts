@@ -2,9 +2,8 @@ import activityRepository from '@/repositories/activities-repository';
 import enrollmentRepository from '@/repositories/enrollment-repository';
 import ticketRepository from '@/repositories/ticket-repository';
 import bookingRepository from '@/repositories/booking-repository';
-import { notFoundError } from '@/errors';
-import { cannotListActivities } from '@/errors';
-import { Activities } from '@prisma/client';
+import { notFoundError, cannotListActivities, conflictError } from '@/errors';
+import { Activities, UserActivities } from '@prisma/client';
 
 async function listActivities(userId: number) {
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
@@ -47,11 +46,20 @@ async function getActivities(userId: number) {
 
 async function createUserActivity(userId: number, activityId: number) {
   await listActivities(userId);
+  const activity = await activityRepository.findActivityById(activityId);
 
-  return await activityRepository.registerInActivity(userId, activityId);
+  const userActivities = await activityRepository.findUserActivities(userId);
+
+  userActivities.map((item: userActivity) => {
+    if(item.startsAt === activity.startsAt) throw conflictError("Usuário já registrado em um evento neste horário");
+  })
+
+  return await activityRepository.registerInActivity({userId, activityId, startsAt: activity.startsAt, endsAt: activity.endsAt});
 }
 
 export type Activity = Omit<Activities, "placeId" | "createdAt" | "updatedAt">;
+
+export type userActivity = Omit<UserActivities, "id" | "createdAt" | "updatedAt">;
 
 const activityService = {
   getActivities,

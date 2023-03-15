@@ -152,8 +152,8 @@ model Activities {
   id        Int      @id @default(autoincrement())
   title     String
   vacancies Int
-  startsAt  DateTime
-  endsAt    DateTime
+  startsAt  String
+  endsAt    String
   day       DateTime
   Places    Places   @relation(fields: [placeId], references: [id])
   placeId   Int
@@ -165,6 +165,8 @@ model Activities {
 
 model UserActivities {
   id        Int      @id @default(autoincrement())
+  startsAt  String
+  endsAt    String
   User      User     @relation(fields: [userId], references: [id])
   userId    Int
   Activities    Activities   @relation(fields: [activityId], references: [id])
