@@ -1,7 +1,7 @@
 import { prisma } from "@/config";
-import { Activity } from "@/services/activities-service";
+// import { Activity } from "@/services/activities-service";
 
-async function findAllActivities(): Promise<Activity[] | []> {
+async function findAllActivities(): Promise<any[] | []> {
   return prisma.activities.findMany({
     select: {
       id: true,
