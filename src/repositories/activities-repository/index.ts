@@ -1,7 +1,6 @@
 import { prisma } from "@/config";
-import { Activity, userActivity } from "@/services/activities-service";
 
-async function findAllActivities(): Promise<Activity[] | []> {
+async function findAllActivities(){
   return prisma.activities.findMany({
     select: {
       id: true,
@@ -19,7 +18,7 @@ async function findAllActivities(): Promise<Activity[] | []> {
   });
 }
 
-async function findActivityById(id: number): Promise<Activity | undefined> {
+async function findActivityById(id: number){
   return prisma.activities.findUnique({
     where:{
       id
@@ -53,8 +52,7 @@ async function findUserActivities(userId: number) {
   });
 }
 
-async function registerInActivity(params: userActivity) {
-  const {userId, activityId, startsAt, endsAt} = params;
+async function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string) {
 
   return prisma.userActivities.create({
     data: {

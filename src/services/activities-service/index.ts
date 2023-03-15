@@ -48,7 +48,7 @@ async function createUserActivity(userId: number, activityId: number) {
     if(item.startsAt === activity.startsAt) throw conflictError("Usuário já registrado em um evento neste horário");
   })
   
-  const createdActivity = await activityRepository.registerInActivity({userId, activityId, startsAt: activity.startsAt, endsAt: activity.endsAt});
+  const createdActivity = await activityRepository.registerInActivity(userId, activityId, activity.startsAt, activity.endsAt);
 
   await activityRepository.updateVacancies(activityId);
 
