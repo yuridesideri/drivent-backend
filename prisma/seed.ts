@@ -23,7 +23,7 @@ async function main() {
       data: [
         { name: 'Online', price: 100, isRemote: true, includesHotel: false },
         { name: 'Presencial', price: 250, isRemote: false, includesHotel: false },
-        { name: 'Presencial', price: 600, isRemote: false, includesHotel: true },
+        { name: 'Presencial', price: 900, isRemote: false, includesHotel: true },
       ],
     });
   }
@@ -31,7 +31,7 @@ async function main() {
     let hotel1WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Resort',
-        image: 'https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?ca=6&ce=1&s=1024x768',
+        image: 'https://pix10.agoda.net/hotelImages/124/1249280/1249280_19091017110043391702.jpg?ca=9&ce=1&s=1024x798',
         Rooms: {
           createMany: {
             data: [
@@ -46,7 +46,7 @@ async function main() {
     let hotel2WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Plazza',
-        image: 'https://thumbs.dreamstime.com/b/hotel-sign-16711677.jpg',
+        image: 'https://thumbs.dreamstime.com/b/hotel-sign-19711977.jpg',
         Rooms: {
           createMany: {
             data: [
@@ -61,12 +61,12 @@ async function main() {
     let hotel3WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Master Hotel',
-        image: 'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/12/1329/MUMGH-P0765-Inner-Courtyard-Hotel-Exterior-Evening.jpg/MUMGH-P0765-Inner-Courtyard-Hotel-Exterior-Evening.16x9.jpg',
+        image: 'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/12/1329/MUMGH-P0795-Inner-Courtyard-Hotel-Exterior-Evening.jpg/MUMGH-P0795-Inner-Courtyard-Hotel-Exterior-Evening.19x9.jpg',
         Rooms: {
           createMany: {
             data: [
               { name: '105', capacity: 3 },
-              { name: '106', capacity: 2 },
+              { name: '109', capacity: 2 },
               { name: '107', capacity: 1 },
             ],
           },
@@ -97,88 +97,88 @@ async function main() {
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: "6:00",
-          endsAt: "7:00",
+          startsAt: "9:00",
+          endsAt: "10:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: "7:30",
-          endsAt: "8:30",
+          startsAt: "10:30",
+          endsAt: "11:30",
           day: new Date(2022, 2, 18, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: "6:00",
-          endsAt: "7:00",
+          startsAt: "9:00",
+          endsAt: "11:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 2
         },
         {
           title: "Palestra y",
           vacancies: 8,
-          startsAt: "6:30",
-          endsAt: "7:30",
+          startsAt: "9:30",
+          endsAt: "10:30",
           day: new Date(2022, 2, 18, 0),
           placeId: 3
         },
         {
           title: "Palestra z",
           vacancies: 3,
-          startsAt: "7:00",
-          endsAt: "7:00",
+          startsAt: "10:00",
+          endsAt: "10:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 3
         },
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: "6:00",
-          endsAt: "7:00",
+          startsAt: "9:00",
+          endsAt: "10:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: "7:00",
-          endsAt: "8:00",
+          startsAt: "10:00",
+          endsAt: "11:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: "6:00",
-          endsAt: "8:00",
+          startsAt: "9:00",
+          endsAt: "11:00",
           day: new Date(2022, 2, 19, 0),
           placeId: 2
         },
         {
           title: "Minecraft: montando o PC ideal",
           vacancies: 27,
-          startsAt: "6:00",
-          endsAt: "7:00",
+          startsAt: "9:00",
+          endsAt: "10:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 1
         },
         {
           title: "LoL: montando o PC ideal",
           vacancies: 3,
-          startsAt: "7:00",
-          endsAt: "8:00",
+          startsAt: "10:00",
+          endsAt: "11:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 1
         },
         {
           title: "Palestra x",
           vacancies: 10,
-          startsAt: "6:00",
-          endsAt: "8:00",
+          startsAt: "9:00",
+          endsAt: "11:00",
           day: new Date(2022, 2, 20, 0),
           placeId: 2
         },
