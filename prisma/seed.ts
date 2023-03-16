@@ -23,7 +23,7 @@ async function main() {
       data: [
         { name: 'Online', price: 100, isRemote: true, includesHotel: false },
         { name: 'Presencial', price: 250, isRemote: false, includesHotel: false },
-        { name: 'Presencial', price: 900, isRemote: false, includesHotel: true },
+        { name: 'Presencial', price: 600, isRemote: false, includesHotel: true },
       ],
     });
   }
