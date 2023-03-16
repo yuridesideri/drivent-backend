@@ -6,6 +6,7 @@ import { Activities, UserActivities } from "@prisma/client";
 
 async function listActivities(userId: number) {
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
+  
   if (!enrollment) {
     throw notFoundError();
   }
@@ -62,6 +63,7 @@ export type userActivity = Omit<UserActivities, "id" | "createdAt" | "updatedAt"
 const activityService = {
   getActivities,
   createUserActivity,
+  listActivities,
 };
 
 export default activityService;
