@@ -5,8 +5,8 @@ import { Event } from "@prisma/client";
 import dayjs from "dayjs";
 
 async function getFirstEvent(): Promise<GetFirstEventResult | string> {
-  const cacheKey = "event";
-
+  const cacheKey = `${process.env.REDIS_KEY}.event`;
+  
   const eventCache = await eventRepository.eventCache(cacheKey);
 
   if (!eventCache) {
