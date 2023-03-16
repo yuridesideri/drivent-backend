@@ -1,6 +1,6 @@
 import { prisma } from "@/config";
 
-async function findAllActivities(){
+async function findAllActivities() {
   return prisma.activities.findMany({
     select: {
       id: true,
@@ -18,9 +18,9 @@ async function findAllActivities(){
   });
 }
 
-async function findActivityById(id: number){
+async function findActivityById(id: number) {
   return prisma.activities.findUnique({
-    where:{
+    where: {
       id
     },
     select: {
@@ -53,7 +53,6 @@ async function findUserActivities(userId: number) {
 }
 
 async function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string) {
-
   return prisma.userActivities.create({
     data: {
       userId,
@@ -76,7 +75,6 @@ async function updateVacancies(id: number) {
     }
   });
 }
-
 
 const activityRepository = {
   findAllActivities,
