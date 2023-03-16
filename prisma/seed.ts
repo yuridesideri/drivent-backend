@@ -129,8 +129,8 @@ async function main() {
         {
           title: "Palestra z",
           vacancies: 3,
-          startsAt: "10:00",
-          endsAt: "11:00",
+          startsAt: "11:00",
+          endsAt: "12:00",
           day: new Date(2022, 2, 18, 0),
           placeId: 3
         },
