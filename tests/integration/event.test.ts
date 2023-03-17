@@ -13,12 +13,16 @@ beforeEach(async () => {
   await cleanDb();
 });
 
+afterAll(async () => {
+  await cleanDb();
+});
+
 const server = supertest(app);
 
 describe("GET /event", () => {
   // it("should respond with status 404 if there is no event", async () => {
   //   const response = await server.get("/event");
-    
+
   //   expect(response.status).toBe(httpStatus.NOT_FOUND);
   // });
 
