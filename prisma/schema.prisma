@@ -165,6 +165,7 @@ model Activities {
 
 model UserActivities {
   id        Int      @id @default(autoincrement())
+  day       DateTime
   startsAt  String
   endsAt    String
   User      User     @relation(fields: [userId], references: [id])

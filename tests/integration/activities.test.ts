@@ -106,6 +106,7 @@ describe("POST /activities when token is valid", () => {
     expect(response.status).toEqual(httpStatus.OK);
     expect(response.body).toEqual({
       id: expect.any(Number),
+      day: expect.any(String),
       startsAt: expect.any(String),
       endsAt: expect.any(String),
       userId: expect.any(Number),
