@@ -31,7 +31,7 @@ async function main() {
     let hotel1WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Resort',
-        image: 'https://pix10.agoda.net/hotelImages/124/1249280/1249280_19091017110043391702.jpg?ca=9&ce=1&s=1024x798',
+        image: 'https://www.hoteliernews.com.br/wp-content/uploads/2022/01/MME-Hoteis-projeto-de-expansao.jpg',
         Rooms: {
           createMany: {
             data: [
@@ -46,7 +46,7 @@ async function main() {
     let hotel2WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Plazza',
-        image: 'https://thumbs.dreamstime.com/b/hotel-sign-19711977.jpg',
+        image: 'https://cdn.panrotas.com.br/portal-panrotas-statics/media-files-cache/301395/078fea0259c5b673bf2d35bcc14f0da5pestanaalvorsouthbeachexterior5/61,0,2424,1447/1206,720,0.24/0/default.jpg',
         Rooms: {
           createMany: {
             data: [
@@ -61,7 +61,7 @@ async function main() {
     let hotel3WithRoom = await prisma.hotel.create({
       data: {
         name: 'Driven Master Hotel',
-        image: 'https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/12/1329/MUMGH-P0795-Inner-Courtyard-Hotel-Exterior-Evening.jpg/MUMGH-P0795-Inner-Courtyard-Hotel-Exterior-Evening.19x9.jpg',
+        image: 'https://www.melhoresdestinos.com.br/wp-content/uploads/2020/10/melhores-hoteis-do-mundo-capa2019-01.jpg',
         Rooms: {
           createMany: {
             data: [
