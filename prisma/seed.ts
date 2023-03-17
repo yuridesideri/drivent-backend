@@ -90,6 +90,8 @@ async function main() {
     })
   }
 
+  const placesArr: Places[] = await prisma.places.findMany();
+
   let activities: Activities[] | Prisma.BatchPayload = await prisma.activities.findMany();
   if (activities.length < 4) {
     activities = await prisma.activities.createMany({
@@ -100,7 +102,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "10:00",
           day: new Date(2022, 2, 18, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "LoL: montando o PC ideal",
@@ -108,7 +110,7 @@ async function main() {
           startsAt: "10:30",
           endsAt: "11:30",
           day: new Date(2022, 2, 18, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "Palestra x",
@@ -116,7 +118,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "11:00",
           day: new Date(2022, 2, 18, 0),
-          placeId: 2
+          placeId: placesArr[1].id
         },
         {
           title: "Palestra y",
@@ -124,7 +126,7 @@ async function main() {
           startsAt: "9:30",
           endsAt: "10:30",
           day: new Date(2022, 2, 18, 0),
-          placeId: 3
+          placeId: placesArr[2].id
         },
         {
           title: "Palestra z",
@@ -132,7 +134,7 @@ async function main() {
           startsAt: "11:00",
           endsAt: "12:00",
           day: new Date(2022, 2, 18, 0),
-          placeId: 3
+          placeId: placesArr[2].id
         },
         {
           title: "Minecraft: montando o PC ideal",
@@ -140,7 +142,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "10:00",
           day: new Date(2022, 2, 19, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "LoL: montando o PC ideal",
@@ -148,7 +150,7 @@ async function main() {
           startsAt: "10:00",
           endsAt: "11:00",
           day: new Date(2022, 2, 19, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "Palestra x",
@@ -156,7 +158,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "11:00",
           day: new Date(2022, 2, 19, 0),
-          placeId: 2
+          placeId: placesArr[1].id
         },
         {
           title: "Minecraft: montando o PC ideal",
@@ -164,7 +166,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "10:00",
           day: new Date(2022, 2, 20, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "LoL: montando o PC ideal",
@@ -172,7 +174,7 @@ async function main() {
           startsAt: "10:00",
           endsAt: "11:00",
           day: new Date(2022, 2, 20, 0),
-          placeId: 1
+          placeId: placesArr[0].id
         },
         {
           title: "Palestra x",
@@ -180,7 +182,7 @@ async function main() {
           startsAt: "9:00",
           endsAt: "11:00",
           day: new Date(2022, 2, 20, 0),
-          placeId: 2
+          placeId: placesArr[1].id
         },
       ]
     });
