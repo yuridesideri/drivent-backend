@@ -46,16 +46,18 @@ async function findUserActivities(userId: number) {
     },
     select: {
       activityId: true,
+      day: true,
       startsAt: true,
       endsAt: true
     }
   });
 }
 
-async function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string) {
+async function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string, day: Date) {
   return prisma.userActivities.create({
     data: {
       userId,
+      day,
       activityId,
       startsAt,
       endsAt

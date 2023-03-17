@@ -1,10 +1,11 @@
 import { prisma } from "@/config";
 import faker from "@faker-js/faker";
 
-export function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string) {
+export function registerInActivity(userId: number, activityId: number, startsAt: string, endsAt: string, day:Date) {
   return prisma.userActivities.create({
     data: {
       userId,
+      day,
       activityId,
       startsAt,
       endsAt

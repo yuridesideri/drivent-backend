@@ -3,6 +3,7 @@ import enrollmentRepository from "@/repositories/enrollment-repository";
 import ticketRepository from "@/repositories/ticket-repository";
 import { notFoundError, cannotListActivities, conflictError } from "@/errors";
 import { Activities, UserActivities } from "@prisma/client";
+import dayjs from "dayjs";
 
 async function listActivities(userId: number) {
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
@@ -46,10 +47,10 @@ async function createUserActivity(userId: number, activityId: number) {
   const userActivities = await activityRepository.findUserActivities(userId);
 
   userActivities.map((item: userActivity) => {
-    if(item.startsAt === activity.startsAt) throw conflictError("Usuário já registrado em um evento neste horário");
+    if(item.startsAt === activity.startsAt && dayjs(item.day).format('D') === dayjs(activity.day).format('D')) throw conflictError("Usuário já registrado em um evento neste horário");
   });
   
-  const createdActivity = await activityRepository.registerInActivity(userId, activityId, activity.startsAt, activity.endsAt);
+  const createdActivity = await activityRepository.registerInActivity(userId, activityId, activity.startsAt, activity.endsAt, activity.day);
 
   await activityRepository.updateVacancies(activityId);
 
