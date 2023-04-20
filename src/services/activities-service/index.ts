@@ -47,7 +47,7 @@ async function createUserActivity(userId: number, activityId: number) {
   const userActivities = await activityRepository.findUserActivities(userId);
 
   userActivities.map((item: userActivity) => {
-    if(item.startsAt === activity.startsAt && dayjs(item.day).format('D') === dayjs(activity.day).format('D')) throw conflictError("Usuário já registrado em um evento neste horário");
+    if(item.startsAt === activity.startsAt && dayjs(item.startsAt).format('D') === dayjs(activity.day).format('D')) throw conflictError("Usuário já registrado em um evento neste horário");
   });
   
   const createdActivity = await activityRepository.registerInActivity(userId, activityId, activity.startsAt, activity.endsAt, activity.day);
