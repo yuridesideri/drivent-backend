@@ -141,37 +141,38 @@ model Booking {
 }
 
 model Places {
-  id             Int              @id @default(autoincrement())
-  name           String
-  Activities     Activities[]
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  id         Int          @id @default(autoincrement())
+  name       String
+  Activities Activities[]
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
 }
 
 model Activities {
-  id        Int      @id @default(autoincrement())
-  title     String
-  vacancies Int
-  startsAt  String
-  endsAt    String
-  day       DateTime
-  Places    Places   @relation(fields: [placeId], references: [id])
-  placeId   Int
+  id             Int              @id @default(autoincrement())
+  title          String
+  vacancies      Int
+  startsAt       String
+  endsAt         String
+  day            DateTime
+  Places         Places           @relation(fields: [placeId], references: [id])
+  placeId        Int
   UserActivities UserActivities[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
   @@index([day])
 }
 
 model UserActivities {
-  id        Int      @id @default(autoincrement())
-  day       DateTime
-  startsAt  String
-  endsAt    String
-  User      User     @relation(fields: [userId], references: [id])
-  userId    Int
-  Activities    Activities   @relation(fields: [activityId], references: [id])
-  activityId   Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int        @id @default(autoincrement())
+  day        DateTime
+  startsAt   String
+  endsAt     String
+  User       User       @relation(fields: [userId], references: [id])
+  userId     Int
+  Activities Activities @relation(fields: [activityId], references: [id])
+  activityId Int
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
