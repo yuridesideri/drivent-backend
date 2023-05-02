@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "ttsc -p tsconfig.build.json",
+    "build": "npm run migration:run & ttsc -p tsconfig.build.json",
     "prepare": "husky install",
     "start": "node dist/server.js",
-    "migration:run": "prisma migrate deploy",
+    "migration:run": "prisma migrate deploy & prisma db seed",
     "migration:generate": "npm run dev:load-envs prisma migrate dev",
     "lint": "eslint .",
     "lint:staged": "lint-staged",
